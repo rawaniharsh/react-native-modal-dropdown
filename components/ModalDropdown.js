@@ -19,6 +19,7 @@ import {
   TouchableHighlight,
   Modal,
   ActivityIndicator,
+  Dimensions
 } from 'react-native';
 
 import ListView from "deprecated-react-native-listview";
@@ -140,6 +141,12 @@ export default class ModalDropdown extends Component {
       showDropdown: false
     });
   }
+
+  componentDidMount() {
+    Dimensions.addEventListener( 'change', (e)=>{
+      this.hide();
+    })
+}
 
   select(idx) {
     const {defaultValue, options, defaultIndex, renderButtonText} = this.props;
